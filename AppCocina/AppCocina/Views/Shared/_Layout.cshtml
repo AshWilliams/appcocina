@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Cocina</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("App Cocina", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>Aplicación diseñada usando .Net MVC 5, SQL Server, ejecutada en la nube de Azure, para el ramo de 1806IFTE-1 - PROYECTO DE INTEGRACION III.</p>
+            <p><a href="https://github.com/AshWilliams/appcocina" class="btn btn-primary btn-sm">Repositorio Github</a></p>
+            <p>&copy; @DateTime.Now.Year - UNIACC, 1806IFTE-1 - PROYECTO DE INTEGRACION III </p>
+        </footer>
+    </div>
+
+
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
