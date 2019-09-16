@@ -421,7 +421,7 @@
                                 $("#CURR_TO").change(function () {
                                     var conv = $(this).val();
                                     var clp = $("#lblPrecio").data('precio');
-                                    $.ajax({                                        
+                                    $.ajax({
                                         method: "GET",
                                         url: "https://free.currconv.com/api/v7/convert",
                                         data: {
@@ -451,7 +451,7 @@
                                         },
                                         method: "GET",
                                         crossDomain: true,
-                                        url: "https://webserviceplatillos.azurewebsites.net/api/values/"+idPlatillo,
+                                        url: "https://webserviceplatillos.azurewebsites.net/api/values/" + idPlatillo,
                                         //url:"http://localhost:62886/api/values/"+idPlatillo,
                                         data: { id: idPlatillo }
                                     }).done(function (response) {
@@ -506,7 +506,74 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-success" id="btnDomicilio" data-toggle="modal" data-target="#myModal2">A Domicilio</button>
                     <button type="button" class="btn btn-primary" id="btnGuardar">Guardar Cambios</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            @Html.AntiForgeryToken()
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Generar Pedido</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Nombre Completo</label>
+                            <input type="text" name="name" value="" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Dirección</label>
+                            <input type="text" name="name" value="" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Comuna</label>
+                            <input type="text" name="name" value="" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email</label>
+                            <input type="email" name="name" value="" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Teléfono</label>
+                            <input type="text" name="name" value="" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Medio de Pago</label>
+                            <select class="form-control" id="selIngredientes">
+                                <option>Seleccione</option>
+                                <option>Efectivo</option>
+                                <option>Débito</option>
+                                <option>Crédito</option>
+                            </select>
+                        </div>
+
+                        <script type="text/javascript">
+                            $(function () {                               
+
+                                $("#btnPedido").click(function () {
+                                        Swal.fire('Pedido a Domicilio Generado de Forma Correcta')
+                                       
+                                        setTimeout(function () {
+                                            $('#myModal2').modal('hide');
+                                            $('#myModal').modal('hide');
+                                            location.reload();
+                                        }, 3000);
+                                });
+
+                            });
+                        </script>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" id="btnPedido">Generar Pedido</button>
                 </div>
             </div>
         </div>
